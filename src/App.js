@@ -115,15 +115,15 @@ export default function App() {
     await erc20.transfer(contractInfo.address, data.get("amount"));
   };
   // Allows withdraw
-  const handleWithdraw = async (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-    const signer = await provider.getSigner();
-    const erc20 = new ethers.Contract(contractInfo.address, erc20abi, signer);
-    await erc20.transfer(signer.getAddress(), data.get("amount"));
-  };
+  //const handleWithdraw = async (e) => {
+  //  e.preventDefault();
+  //  const data = new FormData(e.target);
+  //  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //  await provider.send("eth_requestAccounts", []);
+  //  const signer = await provider.getSigner();
+  //  const erc20 = new ethers.Contract(contractInfo.address, erc20abi, signer);
+  //  await erc20.transfer(signer.getAddress(), data.get("amount"));
+  //};
 
   return (
     <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
@@ -271,27 +271,6 @@ export default function App() {
                   className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
                 >
                   Transfer
-                </button>
-              </footer>
-            </form>
-            <h1 className="text-xl font-semibold text-gray-700 text-center">
-              Withdraw from contract
-            </h1>
-            <form onSubmit={handleWithdraw}>
-              <div className="my-3">
-                <input
-                  type="text"
-                  name="amount"
-                  className="input input-bordered block w-full focus:ring focus:outline-none"
-                  placeholder="Amount to withdraw"
-                />
-              </div>
-              <footer className="p-4">
-                <button
-                  type="submit"
-                  className="btn btn-primary submit-button focus:ring focus:outline-none w-full"
-                >
-                  Withdraw
                 </button>
               </footer>
             </form>
